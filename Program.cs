@@ -7,6 +7,7 @@ string[] disciplines = new string[] { "Математика", "Физика" };
 
 Teacher t = new Teacher(fullName, degree, position, disciplines);
 t.Print();
-
+Teacher teacher = new Teacher();
+teacher.Print();
 t.AddDiscipline("Информатика");
 t.Print();

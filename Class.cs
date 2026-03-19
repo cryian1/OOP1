@@ -8,39 +8,38 @@ namespace OOP111
 {
     public class Teacher
     {
-        // Автореализуемые свойства
         public string FullName { get; set; }
         public string Degree { get; set; }
         public string Position { get; set; }
 
-        // Свойство только для чтения извне (закрытый set)
-        public string[] Disciplines { get; private set; }
+        public string[] Disciplines { get; set; }
 
-        // Конструктор
         public Teacher(string fullName, string degree, string position, string[] disciplines)
         {
             FullName = fullName;
             Degree = degree;
             Position = position;
-            // Если передан null, создаём пустой массив
             Disciplines = disciplines ?? new string[0];
         }
-
-        // Метод добавления новой дисциплины
+        public Teacher()
+        {
+            FullName = "Иванов Иван";
+            Degree = "Доцент";
+            Position = "Доцент";
+            Disciplines = new string[] { "Математика", "физика" };
+        }
         public void AddDiscipline(string discipline)
         {
             if (string.IsNullOrWhiteSpace(discipline)) return;
 
-            // Создаём новый массив с дополнительным элементом
             string[] newArray = new string[Disciplines.Length + 1];
             for (int i = 0; i < Disciplines.Length; i++)
                 newArray[i] = Disciplines[i];
 
             newArray[Disciplines.Length] = discipline;
-            Disciplines = newArray; // присваиваем через private set
+            Disciplines = newArray; 
         }
 
-        // Метод вывода информации
         public void Print()
         {
             Console.WriteLine($"ФИО: {FullName}");
