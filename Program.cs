@@ -1,12 +1,15 @@
 ﻿using OOP111;
+using System.Collections.Generic;
 
-string fullName = "Иванов Иван Иванович";
-string degree = "к.т.н.";
-string position = "доцент";
-string[] disciplines = new string[] { "Математика", "Физика" };
+List<Person> people = new List<Person>();
 
-Teacher t = new Teacher(fullName, degree, position, disciplines);
-t.Print();
+people.Add(new Student("Иванов Иван", 2003, 101, "А-21", 4.5));
+people.Add(new Student("Петрова Мария", 2004, 102, "Б-22", 4.8));
+people.Add(new Prepod("Смирнов Алексей", 1980, 201, "Математика", "Высшая"));
+people.Add(new Prepod("Кузнецова Елена", 1975, 202, "Физика", "Кандидат наук"));
 
-t.AddDiscipline("Информатика");
-t.Print();
+foreach (Person p in people)
+{
+	p.Study();
+	p.Print();
+}
