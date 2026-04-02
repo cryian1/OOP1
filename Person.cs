@@ -22,13 +22,8 @@ namespace OOP111
 		public int birthYear
 		{
 			get => _birthYear;
-			set
-			{
-				if (value > 1900 && value <= DateTime.Now.Year)
-					_birthYear = value;
-				else
-					throw new ArgumentException("Некорректный год рождения");
-			}
+
+
 		}
 
 		public Person(string fullName, int birthYear, int id)
