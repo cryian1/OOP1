@@ -1,13 +1,7 @@
 ﻿using OOP111;
 using System;
 
-var dep1 = new UniversityDepartment<Person>();
-dep1.AddMember(new Student("Иванов Иван", 2003, 101, "А-21", 4.5));
-dep1.AddMember(new Prepod("Смирнов Алексей", 1980, 201, "Математика", "Высшая"));
 
-var dep2 = new UniversityDepartment<Person>();
-dep2.AddMember(new Student("Петрова Мария", 2004, 102, "Б-22", 4.8));
-dep2.AddMember(new Prepod("Кузнецова Елена", 1975, 202, "Физика", "Кандидат наук"));
 
 
 var united = dep1 + dep2;
