@@ -7,36 +7,23 @@ using System.Threading.Tasks;
 
 namespace OOP111
 {
-	public abstract class Person : ILearnable
+
+    public abstract class Person : ILearnable
 	{
-		private string _fullName;
-		private int _birthYear;
-		protected int _id;
-
-		public string fullName
-		{
-			get => _fullName;
-			set => _fullName = value;
-		}
-
-		public int birthYear
-		{
-			get => _birthYear;
-
-
-		}
+		public string FullName { get; set; }
+		public int BirthYear { get; set; }
+		protected int Id { get; set; }
 
 		public Person(string fullName, int birthYear, int id)
 		{
-			_fullName = fullName;
-			_birthYear = birthYear;
-			_id = id;
+			FullName = fullName;
+			BirthYear = birthYear;
+			Id = id;
 		}
 
 		public virtual void Print()
 		{
-			Console.WriteLine($"fullName: {fullName}");
-			Console.WriteLine($"birthYear: {birthYear}");
+			Console.WriteLine($"ФИО: {FullName}, Год рождения: {BirthYear}");
 		}
 
 		public abstract void Study();

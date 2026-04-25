@@ -1,53 +1,43 @@
 ﻿using OOP111;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace OOP111
+public class Student : Person
 {
-	public class Student : Person
+	public string Group { get; set; }
+	public double AverageGrade { get; set; }
+
+	public Student(string fullName, int birthYear, int id, string group, double averageGrade)
+		: base(fullName, birthYear, id)
 	{
-		private string _group;
-		private double _averageGrade;
-
-		public string group
-		{
-			get => _group;
-			set => _group = value;
-		}
-
-		public double averageGrade
-		{
-			get => _averageGrade;
-			set
-			{
-				if (value >= 0 && value <= 5)
-					_averageGrade = value;
-				else
-					throw new ArgumentException("Средний балл должен быть от 0 до 5");
-			}
-		}
-
-		public Student(string fullName, int birthYear, int id, string group, double averageGrade)
-			: base(fullName, birthYear, id)
-		{
-			_group = group;
-			_averageGrade = averageGrade;
-		}
-
-		public override void Print()
-		{
-			base.Print();
-			Console.WriteLine($"group: {group}");
-			Console.WriteLine($"averageGrade: {averageGrade:F2}");
-			Console.WriteLine(new string('-', 25));
-		}
-
-		public override void Study()
-		{
-			Console.WriteLine($"Студент {fullName} (ID: {_id}) учится в группе {group}. Средний балл: {averageGrade:F2}");
-		}
+		Group = group;
+		AverageGrade = averageGrade;
 	}
+
+	public override void Print()
+	{
+		base.Print();
+		Console.WriteLine($"Группа: {Group}, Средний балл: {AverageGrade:F2}");
+		Console.WriteLine(new string('-', 25));
+	}
+
+	public override void Study()
+	{
+		Console.WriteLine($"Студент {FullName} (ID: {Id}) учится в группе {Group}. Балл: {AverageGrade:F2}");
+	}
+
+
+	public static bool operator ==(Student a, Student b)
+	{
+		if (ReferenceEquals(a, b)) return true;
+		if (a is null || b is null) return false;
+		return a.Group == b.Group && a.AverageGrade == b.AverageGrade;
+	}
+
+	public static bool operator !=(Student a, Student b) => !(a == b);
+
+
+	public static bool operator true(Student s) => s?.AverageGrade >= 4.0;
+	public static bool operator false(Student s) => s?.AverageGrade < 4.0;
+
+	public override bool Equals(object obj) => obj is Student other && this == other;
+	public override int GetHashCode() => HashCode.Combine(Group, AverageGrade);
 }

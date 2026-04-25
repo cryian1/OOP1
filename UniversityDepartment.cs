@@ -18,17 +18,37 @@ namespace OOP111
 			_totalMembersCount++;
 		}
 
+
 		public List<T> FindByName(string name)
 		{
-			return _members.Where(p => p.fullName.IndexOf(name, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+			List<T> result = new List<T>();
+			string lowerName = name.ToLower();
+			foreach (T person in _members)
+			{
+				if (person.FullName.ToLower().Contains(lowerName))
+				{
+					result.Add(person);
+				}
+			}
+			return result;
 		}
 
 		public void PrintAll()
 		{
-			foreach (var person in _members)
+			foreach (T person in _members)
 			{
 				person.Print();
 			}
+		}
+
+	
+		public static UniversityDepartment<T> operator +(UniversityDepartment<T> a, UniversityDepartment<T> b)
+		{
+			var result = new UniversityDepartment<T>();
+			result._members.AddRange(a._members);
+			result._members.AddRange(b._members);
+
+			return result;
 		}
 	}
 }
