@@ -41,7 +41,14 @@ namespace OOP111
 			}
 		}
 
-	
 
+		public static UniversityDepartment<T> operator +(UniversityDepartment<T> a, UniversityDepartment<T> b)
+		{
+			var result = new UniversityDepartment<T>();
+			result._members.AddRange(a._members);
+			result._members.AddRange(b._members);
+
+			return result;
+		}
 	}
 }
