@@ -25,19 +25,5 @@ public class Student : Person
 	}
 
 
-	public static bool operator ==(Student a, Student b)
-	{
-		if (ReferenceEquals(a, b)) return true;
-		if (a is null || b is null) return false;
-		return a.Group == b.Group && a.AverageGrade == b.AverageGrade;
-	}
 
-	public static bool operator !=(Student a, Student b) => !(a == b);
-
-
-	public static bool operator true(Student s) => s?.AverageGrade >= 4.0;
-	public static bool operator false(Student s) => s?.AverageGrade < 4.0;
-
-	public override bool Equals(object obj) => obj is Student other && this == other;
-	public override int GetHashCode() => HashCode.Combine(Group, AverageGrade);
 }
