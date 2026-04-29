@@ -133,14 +133,18 @@ public class DrawingTank
 
 
 
-        // БАШНЯ по центру корпуса
-        int turretX = bodyX + bodyW / 2 - 30;   // смещение влево от центра
+        // БАШНЯ (смещена левее)
+        int turretX = bodyX + bodyW / 2 - 50;
         int turretY = y + 8;
         int turretW = 44;
         int turretH = 13;
 
         g.FillRectangle(new SolidBrush(armorColor), turretX, turretY, turretW, turretH);
         g.DrawRectangle(outlinePen, turretX, turretY, turretW, turretH);
+        g.FillEllipse(new SolidBrush(armorColor), turretX + 5, turretY - 4, turretW - 10, 9);
+        g.DrawEllipse(outlinePen, turretX + 5, turretY - 4, turretW - 10, 9);
+        g.FillRectangle(new SolidBrush(armorColor), turretX + 25, turretY - 3, 10, 5);
+        g.DrawRectangle(outlinePen, turretX + 25, turretY - 3, 10, 5);
 
     }
 }
