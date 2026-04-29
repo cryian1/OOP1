@@ -1,7 +1,7 @@
 ﻿namespace ProjectTank;
 
 /// <summary>
-
+/// Полотно
 /// </summary>
 public class CanvasForTank
 {
